@@ -23,10 +23,14 @@ function App() {
   const [selectedUsers, setSelectedUsers] = useState<User[]>([]);
   const getData = async () => {
     try {
-      fetch("https://jsonplaceholder.typicode.com/users")
-        .then((response) => response.json())
-        .then((d: User[]) => setData(d));
-    } catch (error) {}
+      const response = await fetch(
+        "https://jsonplaceholder.typicode.com/users"
+      );
+      const responseData = await response.json();
+      setData(responseData);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const deleteUser = (id: number) => {
