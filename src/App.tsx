@@ -26,7 +26,7 @@ function App() {
       const response = await fetch(
         "https://jsonplaceholder.typicode.com/users"
       );
-      const responseData = await response.json();
+      const responseData: User[] = await response.json();
       setData(responseData);
     } catch (error) {
       console.log(error);
